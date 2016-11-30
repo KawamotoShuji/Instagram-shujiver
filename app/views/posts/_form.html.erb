@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="wrapper>
+    <p ="notice"><%= notice %></p>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <%= form_for(@post, url: choose_new_or_edit) do |f| %>
+        <% if @post.errors.any? %>
+        <div class="error_explanation">
+          <h2><%= @post.errors.count %>件のエラーがあります。</h2>
+
+          <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+
+        </div>
+        <% end %>
+
+        <%= f.label :content %>
+        <%= f.text_field :content, class: 'form-control' %>
+        <% if @post.image? %>
+        <%= image_tag @post.image.url %>
+        <% end %>
+        <br>
+        <%= f.label :image %><br>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+        <br>
+        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+        <% end %>
+        <%= link_to "投稿一覧画面にもどる", posts_path %>
+      </div>
+    </div>
+  </div>
+</div>

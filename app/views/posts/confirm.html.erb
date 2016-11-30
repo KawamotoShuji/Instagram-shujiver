@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="wrapper ">
+    <h3>以下の内容で投稿する？</h3>
+    <%= form_for(@post) do |f| %>
+    <%= f.hidden_field :content %>
+    <%= f.hidden_field :image %>
+    <%= f.hidden_field :image_cache %>
+    <%if @post.image?%>
+    <%= image_tag @post.image.url%>
+    <%end%>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+          <p>本文:<%= @post.content %></p>
+        </div>
+        <%= f.submit "登録する" %>
+        <% end %>
+        <%= form_for(@post, url: new_post_path, method: 'get') do |f| %>
+        <%= f.hidden_field :content %>
+        <%= f.submit "もどる", name: 'back' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
