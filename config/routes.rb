@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'top/index'
+
   devise_for :users
   resources :posts, only: [:index, :new, :create,:edit, :update, :destroy]do
   collection do
     post :confirm
   end
 end
-root 'posts#index'
+root 'top#index'
 if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end

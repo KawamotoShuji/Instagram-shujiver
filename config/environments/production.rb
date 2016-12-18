@@ -76,11 +76,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  ActionMailer::Base.delivery_method = :smtp
+
+config.action_mailer.default_url_options = { host: protected-sea-20140.herokuapp.com }  
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings =
 {
- user_name: "app60054546@heroku.com",
- password: "cjjekk8u0090",
+ user_name: ENV['SENDGRID_USERNAME'],
+ password: ENV['SENDGRID_PASSWORD'],
  domain: "heroku.com",
  address: "smtp.sendgrid.net",
  port: 587,
