@@ -13,7 +13,7 @@
         <div class="well">
           <p>本文:<%= @post.content %></p>
         </div>
-        <%= f.submit "登録する" %>
+        <%= f.submit "投稿する" %>
         <% end %>
         <%= form_for(@post, url: new_post_path, method: 'get') do |f| %>
         <%= f.hidden_field :content %>
