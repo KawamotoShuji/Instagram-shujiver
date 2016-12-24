@@ -3,16 +3,8 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <%= form_for(@post, url: choose_new_or_edit) do |f| %>
-        <% if @post.errors.any? %>
-        <div class="error_explanation">
-          <h2><%= @post.errors.count %>件のエラーがあります。</h2>
 
-          <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-
-        </div>
-        <% end %>
+        <%= f.error_messages! %>
 
         <%= f.label :content %>
         <%= f.text_field :content, class: 'form-control' %>
