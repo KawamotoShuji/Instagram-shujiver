@@ -52,7 +52,11 @@ gem 'devise'
 gem 'faker'
 gem 'rails_12factor', group: :production
 gem 'rmagick'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end

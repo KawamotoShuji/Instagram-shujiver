@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get 'top/index'
 
-  devise_for :users
-  resources :posts, only: [:index, :new, :create,:edit, :update, :destroy]do
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+  resources :users, only: [:show]
+  resources :posts, only: [:index, :new, :create, :show ,:edit, :update, :destroy]do
   collection do
     post :confirm
   end
 end
+
 root 'top#index'
 if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: "/letter_opener"

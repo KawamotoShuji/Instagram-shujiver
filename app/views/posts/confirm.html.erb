@@ -3,10 +3,10 @@
     <h3>以下の内容で投稿する？</h3>
     <%= form_for(@post) do |f| %>
     <%= f.hidden_field :content %>
-    <%= f.hidden_field :image %>
-    <%= f.hidden_field :image_cache %>
-    <%if @post.image?%>
-    <%= image_tag @post.image.url%>
+    <%= f.hidden_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+    <%if @post.avatar?%>
+    <%= image_tag @post.avatar.url%>
     <%end%>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">

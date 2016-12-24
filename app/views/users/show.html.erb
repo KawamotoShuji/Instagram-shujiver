@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="center">
+      <div class="myprofile">
+        <div class="myprofileimage">
+          <%= profile_img(current_user) if profile_img(current_user) %>
+          <div class="myname"><%= current_user.name %></div>
+          <p><%= link_to 'プロフィールを編集', edit_user_registration_path, class: 'btn btn-default btn-sm' %></p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-9 col-md-offset-1"> -->
+    <div class="mypost">
+    <h1>自分の投稿</h1>
+    <% current_user.posts.each do |post| %>
+    <div class="well">
+    <% if post.avatar? %>
+    <%= image_tag post.avatar.url %>
+    <h3><%= link_to "投稿を編集する", edit_post_path(post.id),class: 'btn btn-default btn-sm btn-success' %></h3>
+    <p><%= link_to '投稿を削除する', post_path(post), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %></p>
+    <% end %>
+    </div>
+    <%end%>
+  </div>
+    <!-- </div> -->
+  </div>
+</div>

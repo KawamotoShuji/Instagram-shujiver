@@ -3,7 +3,6 @@
   padding: 20px 20px 20px 35px;
   text-align: center;
   .row {
-   border-bottom: 1px solid #ccc;
  margin: 30px 30px;
    padding: 20px;
    text-align: left;
@@ -63,32 +62,11 @@ input[type="submit"].btn-block{
    padding: 5px 25px;
 }
 .navbar {
-   background-color: transparent;
+   background-color: black;
    color: #c188ff;
    margin-bottom: 0px;
 }
-.navbar-default {
- .navbar-brand {
-   color: white;
-   &:hover {
-     color: white;
-   }
- }
- .navbar-nav > li > a {
-   color: white;
-   &:hover, &:focus {
-     color: white;
-   }
- }
- .navbar-nav > .open > a {
-   background-color: transparent;
-   color: white;
-   &:hover, &:focus {
-     background-color: transparent;
-     color: white;
-   }
- }
-}
+
 @media (max-width: 767px) {
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
    color: green;
@@ -119,9 +97,9 @@ input[type="submit"].btn-block{
  text-align: center;
 }
 
-.homma{
-margin: 10px 10px;
-padding: 10px;
-border-top: solid;
-border-top-width: 0.5px;
+.resize {
+  width: 60px;
+ height: 60px;
+ float: left;
+ margin-right: 10px;
 }
