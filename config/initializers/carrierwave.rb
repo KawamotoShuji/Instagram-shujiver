@@ -1,21 +1,12 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
-      provider:              'AWS',
-      aws_access_key_id:     ENV["AWS_ACCESS_KEY_ID"],
-      aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-      region:                'ap-northeast-1',
-      path_style:            true,
+    :provider               => 'AWS',
+    :aws_access_key_id      => 'AKIAJ7JMI22OYCGJTEIA',
+    :aws_secret_access_key  => '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',
+    :region                 => 'ap-northeast-1'
   }
 
-  config.fog_public     = true
-  config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
+  config.fog_directory = 'modoki' if Rails.env.production?
+  # config.fog_directory = 'your_backet_for_dev' if Rails.env.development?
 
-  case Rails.env
-    when 'production'
-      config.fog_directory = 'modoki'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/modoki'
-    when 'development'
-      config.fog_directory = 'modoki-develop'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/modoki-develop'
-  end
 end
