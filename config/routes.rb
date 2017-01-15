@@ -6,11 +6,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :users, only: [:show]
-  resources :posts, only: [:index, :new, :create, :show ,:edit, :update, :destroy]do
-  collection do
-    post :confirm
-  end
-end
+  resources :posts, only: [:index, :new, :create, :show ,:edit, :update, :destroy]
 
 root 'top#index'
 if Rails.env.development?
