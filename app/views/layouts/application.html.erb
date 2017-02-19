@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Instagram</title>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Shujigram</title>
+  <%= stylesheet_link_tag    'application', media: 'all',:debug => true, :media => "all" %>
+  <%= javascript_include_tag 'application', :debug => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -19,35 +18,44 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Instagram", root_path, class: "navbar-brand" %>
+        <div class="shujigram">
+            <%= link_to image_tag('/shujigram.png', { :border => '0', :alt => '投稿一覧へ'}), posts_path, class: "navbar-brand" %>
+        </div>
+        <!-- <%= link_to "POST", new_post_path, class: "navbar-brand" %> -->
+        <!-- <img class="instaphoto" src="<%= asset_path "glyph-logo_May2016.png"%>"> -->
       </div>
+      <!-- <div class="instfont"><%= link_to "| Shujigram", posts_path, class: "navbar-brand" %></div> -->
+
       <!-- <form class="navbar-form navbar-left" role="search"> -->
-        <!-- <div class="form-group">
-          <! <input type="text" class="form-control" placeholder="Search"> -->
-        <!-- </div> -->
-        <!--<button type="submit" class="btn btn-default">検索！</button>-->
+      <!-- <div class="form-group">
+      <! <input type="text" class="form-control" placeholder="Search"> -->
+      <!-- </div> -->
+      <!--<button type="submit" class="btn btn-default">検索！</button>-->
       <!-- </form> -->
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+              <span class="caret"></span>
+            </a>
             <ul class="dropdown-menu">
               <li><%= link_to "投稿一覧", posts_path %></li>
             </ul>
-          </li>
+          </li> -->
           <% if user_signed_in? %>
-          <li><%= link_to 'マイページ', edit_user_registration_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <div class="mypage"><li><%= link_to image_tag('/mypage.png', { :border => '0', :alt => 'Mypage'}), user_path(current_user)%></li></div>
+          <!-- , edit_user_registration_path -->
           <% else %>
           <li><%= link_to 'ログイン', new_user_session_path %></li>
           <li><%= link_to 'サインアップ', new_user_registration_path %></li>
           <% end %>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
   </nav>
-
 
   <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>">

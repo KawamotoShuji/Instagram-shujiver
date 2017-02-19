@@ -44,6 +44,7 @@ group :development, :test do
 end
 gem "carrierwave"
 gem 'pry-rails'
+gem 'better_errors'
 gem 'compass-rails','~> 2.0'
 gem 'sprockets','2.11.0'
 gem 'twitter-bootstrap-rails'
@@ -52,7 +53,14 @@ gem 'devise'
 gem 'faker'
 gem 'rails_12factor', group: :production
 gem 'rmagick'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'rails_admin'
+gem 'cancan'
+gem 'fog'
 
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end

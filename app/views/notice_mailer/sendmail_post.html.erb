@@ -1,5 +1,8 @@
-<h1>NoticeMailer#sendmail_post</h1>
+<h1>Shujigramに新しく画像が投稿されました！</h1>
+
+
+<p>content: <%= @post.content %></p>
 
 <p>
-  <%= @greeting %>, find me in app/views/notice_mailer/sendmail_post.html.erb
+  <%= link_to '投稿された写真はこちら', posts_url %>
 </p>
