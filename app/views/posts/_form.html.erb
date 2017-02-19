@@ -1,28 +1,20 @@
 <div class="container">
-  <div class="wrapper>
+  <div class="wrapper">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <%= form_for(@post, url: choose_new_or_edit) do |f| %>
-        <% if @post.errors.any? %>
-        <div class="error_explanation">
-          <h2><%= @post.errors.count %>件のエラーがあります。</h2>
 
-          <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-
-        </div>
-        <% end %>
+        <%= f.error_messages! %>
 
         <%= f.label :content %>
         <%= f.text_field :content, class: 'form-control' %>
-        <% if @post.image? %>
-        <%= image_tag @post.image.url %>
+        <% if @post.avatar? %>
+        <%= image_tag @post.avatar.url %>
         <% end %>
         <br>
-        <%= f.label :image %><br>
-        <%= f.file_field :image %>
-        <%= f.hidden_field :image_cache %>
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
         <br>
         <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
         <% end %>

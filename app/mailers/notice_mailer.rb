@@ -8,6 +8,7 @@ class NoticeMailer < ApplicationMailer
   def sendmail_post(post)
     @post = post
 
-    mail to: "m01141329f@edu.teu.ac.jp"
+    mail to: "m01141329f@edu.teu.ac.jp",
+    subject: '画像が投稿されました'
   end
 end

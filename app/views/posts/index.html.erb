@@ -1,22 +1,22 @@
 <div class="container">
   <div class="wrapper">
     <div class="center">
-      <p><%= notice %></p>
-      <h1>投稿一覧</h1>
-      <%= link_to "投稿する", new_post_path, class: 'btn btn-default' %>
       <br>
+      <p><%= link_to '投稿', new_post_path, class: 'btn btn-default btn-sm' %></p>
       <% @posts.each do |post| %>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h4><%= post.user.name %>の投稿</h4>
           <div class="well">
-            <% if post.image? %>
-            <center><%= image_tag post.image.url %></center>
+            <div class="post-under"><%= profile_img(post.user) if profile_img(post.user) %><%= post.user.name %>
+            <div class="create_at">
+            <%= post.created_at.strftime("%y/%m/%d %p %l:%M") %>
+            </div>
+            </div>
+            <% if post.avatar? %>
+            <center><%= image_tag post.avatar.url %></center>
             <% end %>
-            <div class=homma>本文：<%= post.content %></div>
+            <div class="post-top"><%= post.content %></div>
           </div>
-          <%= link_to "投稿を編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' },class: 'btn btn-default btn-sm btn-success' %>
-          <%= link_to '投稿を削除する', post_path(post), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
         </div>
       </div>
       <% end %>
@@ -25,3 +25,4 @@
       </div>
     </div>
   </div>
+</div>
