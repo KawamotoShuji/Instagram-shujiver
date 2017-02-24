@@ -1,0 +1,19 @@
+<ul>
+  <% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+  <div class="comment-p">
+    <%= profile_img(post.user) if profile_img(post.user) %>
+    <%= post.user.name %>
+  </div>
+  <div class="comment">
+  <%= comment.content %>
+  </div>
+  <% if current_user.id == comment.user.id %>
+  <p class="right">
+    <%= link_to '', post_comment_path(post, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+  </p>
+  <% end %>
+  <div class="post-top"></div>
+  <% end %>
+  <% end %>
+</ul>
