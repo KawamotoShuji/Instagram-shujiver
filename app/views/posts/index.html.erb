@@ -24,6 +24,13 @@
             <% end %>
             <div class="post-top"><%= post.content %></div>
           </div>
+          <div id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
+          </div>
+          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+          <% if current_user.id == @post.user_id %>
+          <%= link_to '編集', edit_post_path(@post) %> |
+          <% end %>
         </div>
       </div>
       <% end %>
