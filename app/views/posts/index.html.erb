@@ -15,22 +15,17 @@
             <% if post.avatar? %>
             <center>
               <%= image_tag post.avatar.url %>
-              <div class="edit">
-                <%= link_to post_path(post) do %>
-                コメントする
-                <% end %>
-              </div>
             </center>
             <% end %>
-            <div class="post-top"><%= post.content %></div>
+            <div class="post-top">
+              <%= post.content %>
+            </div>
+            <div class="edit">
+              <%= link_to post_path(post) do %>
+              <button class="btn btn-primary btn-xs">コメントする</button>
+              <% end %>
+            </div>
           </div>
-          <div id="comments_area">
-            <%= render partial: 'comments/index', locals: { comments: @comments, post: @post } %>
-          </div>
-          <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-          <% if current_user.id == @post.user_id %>
-          <%= link_to '編集', edit_post_path(@post) %> |
-          <% end %>
         </div>
       </div>
       <% end %>

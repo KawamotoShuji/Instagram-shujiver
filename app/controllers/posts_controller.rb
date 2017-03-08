@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @posts = Post.all.order(created_at: :DESC)
-    @comment = @post.comments.build
-    @comments = @post.comments
   end
 
   def new
