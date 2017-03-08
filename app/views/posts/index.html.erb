@@ -8,14 +8,23 @@
         <div class="col-md-8 col-md-offset-2">
           <div class="well">
             <div class="post-under"><%= profile_img(post.user) if profile_img(post.user) %><%= post.user.name %>
-            <div class="create_at">
-            <%= post.created_at.strftime("%y/%m/%d %p %l:%M") %>
-            </div>
+              <div class="create_at">
+                <%= post.created_at.strftime("%y/%m/%d %p %l:%M") %>
+              </div>
             </div>
             <% if post.avatar? %>
-            <center><%= image_tag post.avatar.url %></center>
+            <center>
+              <%= image_tag post.avatar.url %>
+            </center>
             <% end %>
-            <div class="post-top"><%= post.content %></div>
+            <div class="post-top">
+              <%= post.content %>
+            </div>
+            <div class="edit">
+              <%= link_to post_path(post) do %>
+              <button class="btn btn-primary btn-xs">コメントする</button>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
